@@ -1,36 +1,34 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "altreality",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Alt Reality",
+  "description": "What if things had been done differently... What else could have been added to the game?",
   "authors": [
-    "Me!"
+    "Earthcomputer",
+    "samnrad"
   ],
   "contact": {
-    "issues": "https://github.com/minecraft-cursed-legacy/Example-Mod/issues",
-    "sources": "https://github.com/minecraft-cursed-legacy/Example-Mod"
+    "issues": "https://github.com/Earthcomputer/AltReality/issues",
+    "sources": "https://github.com/Earthcomputer/AltReality"
   },
 
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "license": "MIT",
+  "icon": "assets/altreality/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "init": [
-      "io.github.minecraftcursedlegacy.example.ExampleMod"
+      "net.earthcomputer.altreality.AltReality"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "altreality.mixins.json"
   ],
 
   "depends": {
     "fabricloader": "*",
     "minecraft": "1.0.0-beta.7.3"
-  },
-  "suggests": {
-    "flamingo": "*"
   }
 }

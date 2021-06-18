@@ -1,4 +1,4 @@
-package io.github.minecraftcursedlegacy.example;
+package net.earthcomputer.altreality;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ import net.fabricmc.api.ModInitializer;
 import tk.valoeghese.zoesteriaconfig.api.container.WritableConfig;
 import tk.valoeghese.zoesteriaconfig.api.template.ConfigTemplate;
 
-public class ExampleMod implements ModInitializer {
+public class AltReality implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
