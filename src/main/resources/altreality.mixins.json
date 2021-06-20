@@ -3,9 +3,21 @@
   "package": "net.earthcomputer.altreality.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "engine.auth.PlayerSpawnS2CMixin"
   ],
   "client": [
-    "ExampleMixin"
+    "engine.auth.AbstractClientPlayerAccessor",
+    "engine.auth.AbstractClientPlayerMixin",
+    "engine.auth.ClientPlayNetworkHandlerMixin",
+    "engine.auth.LoginRequestPacketMixin",
+    "engine.auth.PlayerMixin",
+    "engine.auth.SessionMixin",
+    "engine.fixes.MinecraftMixin",
+    "engine.fixes.ResourceDownloadThreadMixin"
+  ],
+  "server": [
+    "engine.auth.EntityTrackerEntryMixin",
+    "engine.auth.ServerLoginPacketHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
