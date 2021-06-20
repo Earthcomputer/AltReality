@@ -1,0 +1,42 @@
+on: push
+name: build
+
+jobs:
+  release:
+    name: Upload Release Asset
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: build_${{ github.run_id }}
+          release_name: Build ${{ github.run_id }}
+          draft: false
+          prerelease: false
+    outputs:
+      release_url: ${{ steps.create_release.outputs.upload_url }}
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
+    needs: release
+    container:
+      image: openjdk:11-jdk
+      options: --user root
+    steps:
+      - uses: actions/checkout@v2
+      - uses: gradle/wrapper-validation-action@v1
+      - run: ./gradlew build --stacktrace
+      - uses: actions/upload-release-asset@v1
+        name: Upload Release Asset
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.release.outputs.release_url }}
+          asset_path: ./build/libs/altreality.jar
+          asset_name: altreality.jar
+          asset_content_type: application/octet-stream

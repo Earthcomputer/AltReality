@@ -103,3 +103,10 @@ task sourcesJar(type: Jar, dependsOn: classes) {
 	classifier = 'sources'
 	from sourceSets.main.allSource
 }
+
+task copyBuiltJar(type: Copy, dependsOn: remapJar) {
+	from remapJar.outputs
+	into 'build/libs'
+	rename '.*', 'altreality.jar'
+}
+build.dependsOn copyBuiltJar
