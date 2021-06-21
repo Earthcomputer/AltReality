@@ -44,7 +44,7 @@ public class NetworkEncryptionUtils {
     }
 
     private static byte[] hash(byte[]... bs) throws Exception {
-        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        MessageDigest digest = MessageDigest.getInstance("SHA-1");
 
         for (byte[] cs : bs) {
             digest.update(cs);
