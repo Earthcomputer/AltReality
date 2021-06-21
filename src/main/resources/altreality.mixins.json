@@ -9,6 +9,7 @@
     "engine.auth.AbstractClientPlayerAccessor",
     "engine.auth.AbstractClientPlayerMixin",
     "engine.auth.ClientPlayNetworkHandlerMixin",
+    "engine.auth.HandshakePacketMixin",
     "engine.auth.LoginRequestPacketMixin",
     "engine.auth.PlayerMixin",
     "engine.auth.SessionMixin",

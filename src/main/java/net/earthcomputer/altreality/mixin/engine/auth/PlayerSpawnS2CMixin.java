@@ -5,7 +5,9 @@ import net.minecraft.packet.play.PlayerSpawnS2C;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -17,6 +19,11 @@ import java.util.UUID;
 @Mixin(PlayerSpawnS2C.class)
 public class PlayerSpawnS2CMixin implements IPlayerSpawnS2C {
     @Unique private UUID uuid;
+
+    @ModifyConstant(method = "read", constant = @Constant(intValue = 16))
+    private int modifyMaxNameLength(int oldVal) {
+        return 1024;
+    }
 
     @Inject(method = "read", at = @At("RETURN"))
     private void onRead(DataInputStream in, CallbackInfo ci) throws IOException {
