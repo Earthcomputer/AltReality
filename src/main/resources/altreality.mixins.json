@@ -18,6 +18,7 @@
   ],
   "server": [
     "engine.auth.EntityTrackerEntryMixin",
+    "engine.auth.LoginRequestPacketServerMixin",
     "engine.auth.ServerLoginPacketHandlerMixin"
   ],
   "injectors": {
