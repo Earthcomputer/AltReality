@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin(LoginRequestPacket.class)
 public class LoginRequestPacketMixin {
     @ModifyVariable(method = "<init>(Ljava/lang/String;I)V", at = @At("HEAD"), ordinal = 0, argsOnly = true)
-    private int modifyProtocolVersion(int protocolVersion) {
+    private static int modifyProtocolVersion(int protocolVersion) {
         return protocolVersion | Constants.PROTOCOL_VERSION_MARKER;
     }
 }
