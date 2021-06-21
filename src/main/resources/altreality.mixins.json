@@ -3,6 +3,7 @@
   "package": "net.earthcomputer.altreality.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "engine.auth.PlayerMixin",
     "engine.auth.PlayerSpawnS2CMixin"
   ],
   "client": [
@@ -11,7 +12,7 @@
     "engine.auth.ClientPlayNetworkHandlerMixin",
     "engine.auth.HandshakePacketMixin",
     "engine.auth.LoginRequestPacketMixin",
-    "engine.auth.PlayerMixin",
+    "engine.auth.PlayerMixinClient",
     "engine.auth.SessionMixin",
     "engine.fixes.MinecraftMixin",
     "engine.fixes.ResourceDownloadThreadMixin"

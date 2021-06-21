@@ -89,7 +89,7 @@ public abstract class ServerLoginPacketHandlerMixin {
                 try {
                     gameProfile = ServerGlobals.SESSION_SERVICE.hasJoinedServer(new GameProfile(null, packet.username), serverId, null);
                     if (gameProfile != null) {
-                        System.out.println("UUID of player" + gameProfile.getName() + " is " + gameProfile.getId());
+                        System.out.println("UUID of player " + gameProfile.getName() + " is " + gameProfile.getId());
                         loginRequestPacket = packet;
                     } else {
                         drop("Failed to verify username!");
