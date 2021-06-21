@@ -53,25 +53,30 @@ public class ClientPlayNetworkHandlerMixin {
                     String baseServerId = parts[1];
                     String serverId = new BigInteger(NetworkEncryptionUtils.generateServerId(baseServerId, serverPublicKey, clientSecretKey)).toString(16);
 
-                    boolean authSuccess = false;
-                    try {
-                        ClientGlobals.SESSION_SERVICE.joinServer(((IAuthedSession) minecraft.session).getGameProfile(), minecraft.session.field_873, serverId);
-                        authSuccess = true;
-                    } catch (AuthenticationUnavailableException e) {
-                        connection.disconnect("The authentication servers are currently not reachable. Please try again.");
-                    } catch (InvalidCredentialsException e) {
-                        connection.disconnect("Invalid session (Try restarting your game and the launcher)");
-                    } catch (InsufficientPrivilegesException e) {
-                        connection.disconnect("Multiplayer is disabled. Please check your Microsoft account settings.");
-                    } catch (AuthenticationException e) {
-                        connection.disconnect("disconnect.loginFailedInfo", e.getMessage());
-                    }
+                    GameProfile gameProfile = ((IAuthedSession) minecraft.session).getGameProfile();
+                    if (gameProfile.getId() == null) {
+                        connection.disconnect("disconnect.loginFailed");
+                    } else {
+                        boolean authSuccess = false;
+                        try {
+                            ClientGlobals.SESSION_SERVICE.joinServer(gameProfile, minecraft.session.field_873, serverId);
+                            authSuccess = true;
+                        } catch (AuthenticationUnavailableException e) {
+                            connection.disconnect("The authentication servers are currently not reachable. Please try again.");
+                        } catch (InvalidCredentialsException e) {
+                            connection.disconnect("Invalid session (Try restarting your game and the launcher)");
+                        } catch (InsufficientPrivilegesException e) {
+                            connection.disconnect("Multiplayer is disabled. Please check your Microsoft account settings.");
+                        } catch (AuthenticationException e) {
+                            connection.disconnect("disconnect.loginFailedInfo", e.getMessage());
+                        }
 
-                    if (authSuccess) {
-                        String encodedUsername = Base64.getEncoder().encodeToString(NetworkEncryptionUtils.encrypt(serverPublicKey, clientSecretKey.getEncoded()));
-                        encodedUsername += "&" + Base64.getEncoder().encodeToString(NetworkEncryptionUtils.encrypt(serverPublicKey, baseServerId.getBytes(StandardCharsets.UTF_8)));
-                        encodedUsername += "&" + minecraft.session.username;
-                        connection.sendPacket(new LoginRequestPacket(encodedUsername, Constants.PROTOCOL_VERSION));
+                        if (authSuccess) {
+                            String encodedUsername = Base64.getEncoder().encodeToString(NetworkEncryptionUtils.encrypt(serverPublicKey, clientSecretKey.getEncoded()));
+                            encodedUsername += "&" + Base64.getEncoder().encodeToString(NetworkEncryptionUtils.encrypt(serverPublicKey, baseServerId.getBytes(StandardCharsets.UTF_8)));
+                            encodedUsername += "&" + minecraft.session.username;
+                            connection.sendPacket(new LoginRequestPacket(encodedUsername, Constants.PROTOCOL_VERSION));
+                        }
                     }
                 } catch (NetworkEncryptionException e) {
                     throw new IllegalStateException("Protocol error", e);

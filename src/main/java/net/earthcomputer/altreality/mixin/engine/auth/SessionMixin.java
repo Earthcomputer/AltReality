@@ -31,6 +31,9 @@ public class SessionMixin implements IAuthedSession {
     @Inject(method = "<init>", at = @At("RETURN"))
     private void onConstruct(String username, String sessionId, CallbackInfo ci) {
         UUID uuid = null;
+        if (sessionId.startsWith("token:")) {
+            sessionId = sessionId.substring(6);
+        }
         if (sessionId.contains(":")) {
             String[] parts = sessionId.split(":", 2);
             field_873 = parts[0];
