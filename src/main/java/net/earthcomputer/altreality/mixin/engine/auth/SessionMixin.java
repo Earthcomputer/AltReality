@@ -38,8 +38,8 @@ public class SessionMixin implements IAuthedSession {
             String[] parts = sessionId.split(":", 2);
             field_873 = parts[0];
             try {
-                uuid = UUID.fromString(parts[1]);
-            } catch (IllegalArgumentException e) {
+                uuid = UUIDTypeAdapter.fromString(parts[1]);
+            } catch (Exception e) {
                 System.out.println("Invalid uuid: " + parts[1]);
             }
         } else {
