@@ -27,7 +27,7 @@ public class Constants {
             throw new RuntimeException("Unable to find protocol version", e);
         }
 
-        String wantedDesc = String.format("(%s)V", HandshakePacket.class.getName().replace('.', '/'));
+        String wantedDesc = String.format("(L%s;)V", HandshakePacket.class.getName().replace('.', '/'));
         for (MethodNode method : cpnhClass.methods) {
             if (method.desc.equals(wantedDesc)) {
                 int lastIntConstant = 0;
