@@ -73,6 +73,7 @@ public class SoundLoader {
             }
         }
 
+        Files.createDirectories(SOUND_DIR);
         Files.write(SOUND_DIR.resolve("READ_ME_IM_VERY_IMPORTANT.txt"), Collections.singletonList("Files in this directory will be deleted the next time the game is run"), StandardOpenOption.CREATE);
     }
 
