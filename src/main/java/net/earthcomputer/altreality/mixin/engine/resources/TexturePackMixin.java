@@ -17,7 +17,7 @@ import java.io.InputStream;
 public abstract class TexturePackMixin {
     @Shadow public abstract InputStream method_976(String name);
 
-    @Inject(method = "method_976", at = @At(value = "CONSTANT", args = "classValue=net/minecraft/client/resource/TexturePack"), cancellable = true)
+    @Inject(method = "method_976", at = @At(value = "INVOKE", target = "Ljava/lang/Class;getResourceAsStream(Ljava/lang/String;)Ljava/io/InputStream;", remap = false), cancellable = true)
     private void onFindResource(String name, CallbackInfoReturnable<InputStream> cir) {
         if (!name.startsWith("/assets/") && name.startsWith("/")) {
             InputStream resource = method_976("/assets/minecraft" + name);
