@@ -16,7 +16,9 @@
     "engine.auth.PlayerMixinClient",
     "engine.auth.SessionMixin",
     "engine.fixes.MinecraftMixin",
-    "engine.fixes.ResourceDownloadThreadMixin",
+    "engine.resources.class_266Accessor",
+    "engine.resources.ResourceDownloadThreadMixin",
+    "engine.resources.SoundHelperAccessor",
     "engine.resources.TexturePackMixin",
     "engine.resources.ZippedTexturePackMixin"
   ],

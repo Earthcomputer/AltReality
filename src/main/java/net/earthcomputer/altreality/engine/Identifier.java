@@ -38,6 +38,10 @@ public final class Identifier {
         return "/assets/" + namespace + "/" + path;
     }
 
+    public String getResourcePath(String dir) {
+        return "/assets/" + namespace + "/" + dir + "/" + path;
+    }
+
     @Override
     public int hashCode() {
         return path.hashCode() + 31 * namespace.hashCode();
