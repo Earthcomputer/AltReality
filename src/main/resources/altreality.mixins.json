@@ -4,7 +4,8 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "engine.auth.PlayerMixin",
-    "engine.auth.PlayerSpawnS2CMixin"
+    "engine.auth.PlayerSpawnS2CMixin",
+    "engine.resources.TranslationStorageMixin"
   ],
   "client": [
     "engine.auth.AbstractClientPlayerAccessor",
@@ -15,7 +16,9 @@
     "engine.auth.PlayerMixinClient",
     "engine.auth.SessionMixin",
     "engine.fixes.MinecraftMixin",
-    "engine.fixes.ResourceDownloadThreadMixin"
+    "engine.fixes.ResourceDownloadThreadMixin",
+    "engine.resources.TexturePackMixin",
+    "engine.resources.ZippedTexturePackMixin"
   ],
   "server": [
     "engine.auth.EntityTrackerEntryMixin",

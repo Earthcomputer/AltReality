@@ -16,6 +16,7 @@ import java.io.IOException;
 
 public class Constants {
     public static final String MOD_NAME = "AltReality";
+    public static final String MOD_ID = "altreality";
     public static final int PROTOCOL_VERSION_MARKER = 1 << 30;
     public static final int PROTOCOL_VERSION = findProtocolVersion();
 
