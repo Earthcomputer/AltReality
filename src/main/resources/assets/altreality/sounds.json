@@ -1,3 +1,8 @@
 {
-
+  "newmusic/hal1.ogg": {
+    "replace": true,
+    "sounds": [
+      {"name": "altreality:newmusic/hal1.ogg","music": true}
+    ]
+  }
 }
