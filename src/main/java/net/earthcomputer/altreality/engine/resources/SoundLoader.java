@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
@@ -33,6 +32,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class SoundLoader {
     private static final Path SOUND_DIR = FabricLoader.getInstance().getConfigDir().resolve(Constants.MOD_ID).resolve("sounds");
@@ -47,11 +47,7 @@ public class SoundLoader {
         soundEvents = gson.fromJson(new InputStreamReader(resource, StandardCharsets.UTF_8), new TypeToken<Map<String, SoundEvent>>(){}.getType());
 
         if (Files.exists(SOUND_DIR)) {
-            try (DirectoryStream<Path> s = Files.newDirectoryStream(SOUND_DIR)) {
-                for (Path file : (Iterable<Path>) Files.walk(SOUND_DIR)::iterator) {
-                    Files.delete(file);
-                }
-            }
+            deleteRecursive(SOUND_DIR);
         }
 
         Set<Identifier> alreadyExtractedSounds = new HashSet<>();
@@ -75,6 +71,17 @@ public class SoundLoader {
 
         Files.createDirectories(SOUND_DIR);
         Files.write(SOUND_DIR.resolve("READ_ME_IM_VERY_IMPORTANT.txt"), Collections.singletonList("Files in this directory will be deleted the next time the game is run"), StandardOpenOption.CREATE);
+    }
+
+    private static void deleteRecursive(Path dir) throws IOException {
+        if (Files.isDirectory(dir)) {
+            try (Stream<Path> subFiles = Files.list(dir)) {
+                for (Path subFile : (Iterable<Path>) subFiles::iterator) {
+                    deleteRecursive(subFile);
+                }
+            }
+        }
+        Files.delete(dir);
     }
 
     public static void reloadSounds(Minecraft mc) {
