@@ -27,6 +27,7 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.nio.file.StandardOpenOption;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -72,7 +73,7 @@ public class SoundLoader {
             }
         }
 
-        Files.write(SOUND_DIR.resolve("READ_ME_IM_VERY_IMPORTANT.txt"), Collections.singletonList("Files in this directory will be deleted the next time the game is run"));
+        Files.write(SOUND_DIR.resolve("READ_ME_IM_VERY_IMPORTANT.txt"), Collections.singletonList("Files in this directory will be deleted the next time the game is run"), StandardOpenOption.CREATE);
     }
 
     public static void reloadSounds(Minecraft mc) {
