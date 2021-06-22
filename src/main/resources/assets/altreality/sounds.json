@@ -4,65 +4,49 @@
     "sounds": [
       {"name": "altreality:newmusic/hal1.ogg","music": true}
     ]
-  }
-}
-{
+  },
   "newmusic/hal2.ogg": {
     "replace": true,
     "sounds": [
       {"name": "altreality:newmusic/hal2.ogg","music": true}
     ]
-  }
-}
-{
+  },
   "newmusic/hal3.ogg": {
     "replace": true,
     "sounds": [
       {"name": "altreality:newmusic/hal3.ogg","music": true}
     ]
-  }
-}
-{
+  },
   "newmusic/hal4.ogg": {
     "replace": true,
     "sounds": [
       {"name": "altreality:newmusic/hal4.ogg","music": true}
     ]
-  }
-}
-{
+  },
   "newmusic/nuance1.ogg": {
     "replace": true,
     "sounds": [
       {"name": "altreality:newmusic/nuance1.ogg","music": true}
     ]
-  }
-}
-{
+  },
   "newmusic/nuance2.ogg": {
     "replace": true,
     "sounds": [
       {"name": "altreality:newmusic/nuance2.ogg","music": true}
     ]
-  }
-}
-{
+  },
   "newmusic/piano1.ogg": {
     "replace": true,
     "sounds": [
       {"name": "altreality:newmusic/piano1.ogg","music": true}
     ]
-  }
-}
-{
+  },
   "newmusic/piano2.ogg": {
     "replace": true,
     "sounds": [
       {"name": "altreality:newmusic/piano2.ogg","music": true}
     ]
-  }
-}
-{
+  },
   "newmusic/piano3.ogg": {
     "replace": true,
     "sounds": [
