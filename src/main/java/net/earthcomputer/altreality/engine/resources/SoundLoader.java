@@ -53,7 +53,7 @@ public class SoundLoader {
         Set<Identifier> alreadyExtractedSounds = new HashSet<>();
         for (SoundEvent soundEvent : soundEvents.values()) {
             for (SoundFile soundFile : soundEvent.sounds) {
-                Identifier id = Identifier.parse(soundFile.name);
+                Identifier id = Identifier.parse(soundFile.name + ".ogg");
                 if (!alreadyExtractedSounds.add(id)) {
                     continue;
                 }

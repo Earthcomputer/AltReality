@@ -1,56 +1,56 @@
 {
-  "newmusic/hal1.ogg": {
+  "hal1": {
     "replace": true,
     "sounds": [
-      {"name": "altreality:newmusic/hal1.ogg","music": true}
+      {"name": "altreality:newmusic/hal1","music": true}
     ]
   },
-  "newmusic/hal2.ogg": {
+  "hal2": {
     "replace": true,
     "sounds": [
-      {"name": "altreality:newmusic/hal2.ogg","music": true}
+      {"name": "altreality:newmusic/hal2","music": true}
     ]
   },
-  "newmusic/hal3.ogg": {
+  "hal3": {
     "replace": true,
     "sounds": [
-      {"name": "altreality:newmusic/hal3.ogg","music": true}
+      {"name": "altreality:newmusic/hal3","music": true}
     ]
   },
-  "newmusic/hal4.ogg": {
+  "hal4": {
     "replace": true,
     "sounds": [
-      {"name": "altreality:newmusic/hal4.ogg","music": true}
+      {"name": "altreality:newmusic/hal4","music": true}
     ]
   },
-  "newmusic/nuance1.ogg": {
+  "nuance1": {
     "replace": true,
     "sounds": [
-      {"name": "altreality:newmusic/nuance1.ogg","music": true}
+      {"name": "altreality:newmusic/nuance1","music": true}
     ]
   },
-  "newmusic/nuance2.ogg": {
+  "nuance2": {
     "replace": true,
     "sounds": [
-      {"name": "altreality:newmusic/nuance2.ogg","music": true}
+      {"name": "altreality:newmusic/nuance2","music": true}
     ]
   },
-  "newmusic/piano1.ogg": {
+  "piano1": {
     "replace": true,
     "sounds": [
-      {"name": "altreality:newmusic/piano1.ogg","music": true}
+      {"name": "altreality:newmusic/piano1","music": true}
     ]
   },
-  "newmusic/piano2.ogg": {
+  "piano2": {
     "replace": true,
     "sounds": [
-      {"name": "altreality:newmusic/piano2.ogg","music": true}
+      {"name": "altreality:newmusic/piano2","music": true}
     ]
   },
-  "newmusic/piano3.ogg": {
+  "piano3": {
     "replace": true,
     "sounds": [
-      {"name": "altreality:newmusic/piano3.ogg","music": true}
+      {"name": "altreality:newmusic/piano3","music": true}
     ]
   }
 }
