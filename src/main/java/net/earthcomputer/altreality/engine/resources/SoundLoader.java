@@ -102,11 +102,11 @@ public class SoundLoader {
                 Identifier id = Identifier.parse(sound.name);
                 File file = SOUND_DIR.resolve(id.getNamespace()).resolve(id.getPath()).toFile();
                 if (sound.stream) {
-                    mc.soundHelper.method_2016(eventName, file);
+                    mc.soundHelper.method_2016(eventName + ".ogg", file);
                 } else if (sound.music) {
-                    mc.soundHelper.method_2018(eventName, file);
+                    mc.soundHelper.method_2018(eventName + ".ogg", file);
                 } else {
-                    mc.soundHelper.method_2011(eventName, file);
+                    mc.soundHelper.method_2011(eventName + ".ogg", file);
                 }
             }
         });
