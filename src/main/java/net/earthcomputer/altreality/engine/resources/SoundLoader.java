@@ -92,21 +92,30 @@ public class SoundLoader {
                     List<class_267> previousSounds = ((class_266Accessor) class_266).getField_1089().get(eventName);
                     if (previousSounds != null) {
                         class_266.field_1086 -= previousSounds.size();
-                        ((class_266Accessor) class_266).getField_1090().removeIf(it -> it.field_2126.equals(eventName));
+                        ((class_266Accessor) class_266).getField_1090().removeIf(it -> {
+                            String soundName = it.field_2126;
+                            soundName = soundName.substring(0, soundName.indexOf('.'));
+                            while (!soundName.isEmpty() && Character.isDigit(soundName.charAt(soundName.length() - 1))) {
+                                soundName = soundName.substring(0, soundName.length() - 1);
+                            }
+                            soundName = soundName.replace('/', '.');
+                            return soundName.equals(eventName);
+                        });
                         ((class_266Accessor) class_266).getField_1089().remove(eventName);
                     }
                 }
             }
 
             for (SoundFile sound : soundEvent.sounds) {
-                Identifier id = Identifier.parse(sound.name);
+                Identifier id = Identifier.parse(sound.name + ".ogg");
                 File file = SOUND_DIR.resolve(id.getNamespace()).resolve(id.getPath()).toFile();
+                String eventFileName = eventName.replace(".", "/") + ".ogg";
                 if (sound.stream) {
-                    mc.soundHelper.method_2016(eventName + ".ogg", file);
+                    mc.soundHelper.method_2016(eventFileName, file);
                 } else if (sound.music) {
-                    mc.soundHelper.method_2018(eventName + ".ogg", file);
+                    mc.soundHelper.method_2018(eventFileName, file);
                 } else {
-                    mc.soundHelper.method_2011(eventName + ".ogg", file);
+                    mc.soundHelper.method_2011(eventFileName, file);
                 }
             }
         });
